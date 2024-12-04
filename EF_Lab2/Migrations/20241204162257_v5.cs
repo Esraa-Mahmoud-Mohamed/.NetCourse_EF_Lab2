@@ -1,0 +1,96 @@
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace EF_Lab2.Migrations
+{
+    /// <inheritdoc />
+    public partial class v5 : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.InsertData(
+                table: "Authors",
+                columns: new[] { "Id", "Brief", "JoinDate", "Name", "Password", "Username" },
+                values: new object[,]
+                {
+                    { 1, null, new DateOnly(2012, 5, 1), "Ahmed Hassan", "123", "Ahmed Hassan" },
+                    { 2, null, new DateOnly(2012, 5, 1), "Mona Mohamed", "123", "Mona Mohamed" },
+                    { 3, null, new DateOnly(2012, 5, 1), "Mazen Mostafa", "123", "Mazen Mostafa" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Catalogs",
+                columns: new[] { "ID", "Description", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Business", "Business" },
+                    { 2, "Sports", "Sports" },
+                    { 3, "Entertainment", "Entertainment" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "News",
+                columns: new[] { "Id", "Brief", "Description", "NewDateTime", "Title", "auth_id", "cat_id" },
+                values: new object[,]
+                {
+                    { 1, null, null, new DateTime(2024, 12, 4, 18, 22, 56, 324, DateTimeKind.Local).AddTicks(8849), "Mideast Stocks", 1, 1 },
+                    { 2, null, null, new DateTime(2024, 12, 4, 18, 22, 56, 326, DateTimeKind.Local).AddTicks(5476), "Liverpool News", 2, 2 },
+                    { 3, null, null, new DateTime(2024, 12, 4, 18, 22, 56, 326, DateTimeKind.Local).AddTicks(5493), "Film23 Release", 3, 3 }
+                });
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DeleteData(
+                table: "News",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "News",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "News",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "Id",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "Id",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Authors",
+                keyColumn: "Id",
+                keyValue: 3);
+
+            migrationBuilder.DeleteData(
+                table: "Catalogs",
+                keyColumn: "ID",
+                keyValue: 1);
+
+            migrationBuilder.DeleteData(
+                table: "Catalogs",
+                keyColumn: "ID",
+                keyValue: 2);
+
+            migrationBuilder.DeleteData(
+                table: "Catalogs",
+                keyColumn: "ID",
+                keyValue: 3);
+        }
+    }
+}
